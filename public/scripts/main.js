@@ -26,14 +26,15 @@ function displayResult(data) {
     if (data.error) {
         resultDiv.innerText = data.error;
     } else {
-        const { id, name, height, weight, types, flavorTextEntries } = data;
+        const { id, name, height, weight, types, sprites, flavorTextEntries } = data;
         const typesHTML = types.map(type => `<button class="type-button ${type.type.name}">${type.type.name}</button>`).join(' ');
 
         resultDiv.innerHTML = `<p>ID: ${id}</p>
                                <p>Name: ${name}</p>
-                               <p>Height: ${height} m</p>
-                               <p>Weight: ${weight} kg</p>
+                               <p>Height: ${height}</p>
+                               <p>Weight: ${weight}</p>
                                <p>Types: ${typesHTML}</p>
+                               <img src="${sprites.front_default}" alt="${name}"> <!-- Pokémon sprite -->
                                <p>Flavor Text Entries:</p>
                                <table>
                                    <thead>

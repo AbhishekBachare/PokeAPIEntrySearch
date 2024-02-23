@@ -17,7 +17,7 @@ app.post('/search', async (req, res) => {
     try {
         // Fetch basic Pokémon details
         const pokemonResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-        const { id, name, height, weight, types } = pokemonResponse.data;
+        const { id, name, height, weight, types, sprites } = pokemonResponse.data;
 
         // Convert height to meters and weight to kilograms
         const heightInMeters = height / 10; // API returns height in decimeters
@@ -29,7 +29,7 @@ app.post('/search', async (req, res) => {
             .filter(entry => entry.language.name === 'en')
             .map(entry => ({ version: entry.version.name, flavorText: entry.flavor_text }));
 
-        res.json({ id, name, height: heightInMeters, weight: weightInKg, types, flavorTextEntries });
+        res.json({ id, name, height: heightInMeters, weight: weightInKg, types, sprites, flavorTextEntries });
     } catch (error) {
         res.status(404).json({ error: 'Pokémon not found' });
     }
