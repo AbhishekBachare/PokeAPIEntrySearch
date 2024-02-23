@@ -27,11 +27,13 @@ function displayResult(data) {
         resultDiv.innerText = data.error;
     } else {
         const { id, name, height, weight, types, flavorTextEntries } = data;
+        const typesHTML = types.map(type => `<button class="type-button ${type.type.name}">${type.type.name}</button>`).join(' ');
+
         resultDiv.innerHTML = `<p>ID: ${id}</p>
                                <p>Name: ${name}</p>
-                               <p>Height: ${height} meters</p>
-                               <p>Weight: ${weight} kilograms</p>
-                               <p>Types: ${types.map(type => type.type.name).join(', ')}</p>
+                               <p>Height: ${height} m</p>
+                               <p>Weight: ${weight} kg</p>
+                               <p>Types: ${typesHTML}</p>
                                <p>Flavor Text Entries:</p>
                                <table>
                                    <thead>
