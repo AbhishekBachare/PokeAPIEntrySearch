@@ -29,8 +29,8 @@ function displayResult(data) {
         const { id, name, height, weight, types, flavorTextEntries } = data;
         resultDiv.innerHTML = `<p>ID: ${id}</p>
                                <p>Name: ${name}</p>
-                               <p>Height: ${height}</p>
-                               <p>Weight: ${weight}</p>
+                               <p>Height: ${height} meters</p>
+                               <p>Weight: ${weight} kilograms</p>
                                <p>Types: ${types.map(type => type.type.name).join(', ')}</p>
                                <p>Flavor Text Entries:</p>
                                <table>
